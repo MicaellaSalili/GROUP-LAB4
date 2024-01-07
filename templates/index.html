@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Table - Lab 4</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 40%;
+            margin: 0 50px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            height: 10%;
+            width: 40%;
+            margin: 0px 50px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        select, input, textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .stack {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .stack-item {
+            background-color: #e0e0e0;
+            margin: 2px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>HASH TABLE</h1>
+
+        <form method="post" action="/">
+            <label for="hash_function">Select Hash Function:</label>
+            <select name="hash_function">
+                <option value="1">Hash Function 1</option>
+                <option value="2">Hash Function 2</option>
+                <option value="3">Hash Function 3</option>
+            </select>
+
+            <br><br>
+
+            <label for="num_commands">Number of Commands:</label>
+            <input type="number" name="num_commands" required>
+
+            <br><br>
+
+            <label for="commands">Commands (one per line):</label>
+            <textarea name="commands" rows="10" cols="30" required></textarea>
+
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>OUTPUT</h2>
+        <table>
+            <tr>
+                <th>Index</th>
+                <th>Slot Contents</th>
+            </tr>
+            {% for index in range(hash_table|length) %}
+                <tr>
+                    <td>{{ index }}</td>
+                    <td>
+                        <ul class="stack">
+                            {% for element in hash_table[index] %}
+                                <li class="stack-item">{{ element }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
